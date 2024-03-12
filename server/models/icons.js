@@ -4,6 +4,7 @@ const IconSchema = new mongoose.Schema({
   _id: Number,
   app: String,
   sub: Number,
+  icon: String
 });
 
 const IconModel = mongoose.model("apps", IconSchema);

@@ -20,6 +20,7 @@ function App() {
             <th>id</th>
             <th>app</th>
             <th>sub</th>
+            <th>icon</th>
           </tr>
         </thead>
         <tbody>
@@ -29,6 +30,9 @@ function App() {
                 <td>{icon._id}</td>
                 <td>{icon.app}</td>
                 <td>{icon.sub}</td>
+                <td>
+                  <img src={icon.icon} alt="." className="iconOfApp" />
+                </td>
               </tr>
             );
           })}
