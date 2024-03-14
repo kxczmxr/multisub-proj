@@ -4,7 +4,8 @@ const IconSchema = new mongoose.Schema({
   _id: Number,
   app: String,
   sub: Number,
-  icon: String
+  icon: String,
+  isactive: Boolean
 });
 
 const IconModel = mongoose.model("apps", IconSchema);

@@ -4,10 +4,9 @@ import IconBoard from "./Components/IconBoard";
 import Header from "./Components/Header";
 function App() {
   return (
-    <div>
-      <Header />
+    <>
       <IconBoard />
-    </div>
+    </>
   );
 }
 

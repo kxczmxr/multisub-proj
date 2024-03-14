@@ -1,10 +1,11 @@
 
 export default function Header() {
+
   return (
-    <nav>
+    <nav className="navbar">
       <ul>
-        <li>KONTO</li>
-        <li>STAN: 0</li>
+        <li>USER: </li>
+        <li></li>
       </ul>
     </nav>
   );

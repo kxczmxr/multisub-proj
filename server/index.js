@@ -1,39 +1,4 @@
-// const express = require("express");
-// const PORT = process.env.PORT || 3001;
-// const app = express();
-// const mongoose = require("mongoose");
-// const cors = require("cors");
-// const IconModel = require("./models/icons");
-
-// app.use(cors());
-// app.use(express.json());
-// app.get("/api", (req, res) => {
-//   res.json({ message: "Hello from server" });
-// });
-
-// const uri =
-//   "mongodb+srv://kxczmxr:kxczmxr@project.wcxw4rb.mongodb.net/?retryWrites=true&w=majority&appName=project";
-
-// async function connect() {
-//   try {
-//     await mongoose.connect(uri);
-//     console.log("Connected to MongoDB");
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
-
-// connect();
-
-// app.get("/getIcon", (req, res) => {
-//   IconModel.find({})
-//     .then((apps) => res.json(apps))
-//     .catch((err) => res.json(err));
-// });
-
-// app.listen(PORT, () => {
-//   console.log("Listening on " + PORT);
-// });
+// Serwer Node.js z MongoDB
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -44,6 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 mongoose.connect(
+  //"mongodb://localhost:27017/multisub-proj-local"
   "mongodb+srv://kxczmxr:kxczmxr@project.wcxw4rb.mongodb.net/multisubdb"
 );
 
@@ -53,6 +19,23 @@ app.get("/getIcon", (req, res) => {
     .catch((err) => res.json(err));
 });
 
+app.post("/updateIcon", async (req, res) => {
+  try {
+    const { iconId, isactive } = req.body;
+
+    // Zmiana stanu isactive na przeciwny w bazie danych
+    const updatedIcon = await IconModel.findByIdAndUpdate(iconId, {
+      isactive: !isactive,
+    });
+
+    console.log("Icon state updated successfully!", updatedIcon);
+    res.status(200).send("Icon state updated successfully!");
+  } catch (error) {
+    console.error("Error updating icon state:", error);
+    res.status(500).send("Error updating icon state");
+  }
+});
+
 app.listen(3001, () => {
-  console.log("server is running");
+  console.log("Server is running");
 });
