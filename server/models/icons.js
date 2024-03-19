@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const IconSchema = new mongoose.Schema({
-  _id: Number,
+  _id: String,
   app: String,
   sub: Number,
   icon: String,

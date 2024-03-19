@@ -29,10 +29,13 @@ export default function IconBoard({}) {
     });
     setTotalPrice(totalPrice);
   }, [icons]);
- 
-  const handleIconClick = async (iconId, sub, isactive) => {
+useEffect(() => {
+  console.log('icons', icons);
+}, [icons]);
+
+  const handleIconClick = async (iconId, isactive) => {
     try {
-      const response = await axios.post("http://localhost:3001/updateIcon", {
+      const response = await axios.post("http://localhost:3001/updateIcons", {
         iconId,
         isactive: !isactive,
       });
@@ -76,7 +79,7 @@ export default function IconBoard({}) {
           <div
             className="iconWrap"
             key={icon._id}
-            onClick={() => handleIconClick(icon._id, icon.sub, icon.isactive)}
+            onClick={() => handleIconClick(icon._id, icon.isactive)}
           >
             <img
               src={icon.icon}
