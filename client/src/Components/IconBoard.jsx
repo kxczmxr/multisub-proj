@@ -29,10 +29,9 @@ export default function IconBoard({}) {
     });
     setTotalPrice(totalPrice);
   }, [icons]);
-useEffect(() => {
-  console.log('icons', icons);
-}, [icons]);
-
+  useEffect(() => {
+    console.log("icons", icons);
+  }, [icons]);
   const handleIconClick = async (iconId, isactive) => {
     try {
       const response = await axios.post("http://localhost:3001/updateIcons", {
@@ -41,13 +40,11 @@ useEffect(() => {
       });
 
       if (response.status === 200) {
-        const updatedIcons = icons.map((icon) => {
-          if (icon._id === iconId) {
-            return { ...icon, isactive: !isactive };
-          }
-          return icon;
-        });
-        setIcons(updatedIcons);
+        setIcons((prev) =>
+          prev.map((icon) =>
+            icon._id === iconId ? { ...icon, isactive: !icon.isactive } : icon
+          )
+        );
         console.log("Icon state updated successfully!");
       }
     } catch (error) {

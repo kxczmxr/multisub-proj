@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
-
-const IconSchema = new mongoose.Schema({
-  _id: String,
+const Schema = mongoose.Schema;
+const IconSchema = new Schema({
+  _id: mongoose.Schema.Types.ObjectId,
   app: String,
   sub: Number,
   icon: String,
-  isactive: Boolean
+  isactive: Boolean,
 });
 
 const IconModel = mongoose.model("apps", IconSchema);
