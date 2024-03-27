@@ -15,8 +15,7 @@ mongoose.connect(
 app.get("/getIcon", (req, res) => {
   IconModel.find()
     .then((icons) => res.json(icons))
-    .catch((err) => res.json(err));
-    
+    .catch((err) => res.json(err));   
 });
 app.post("/updateIcons", async (req, res) => {
   try {

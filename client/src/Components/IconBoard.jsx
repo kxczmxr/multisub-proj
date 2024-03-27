@@ -20,15 +20,15 @@ export default function IconBoard({}) {
       });
   }, []);
 
-  useEffect(() => {
-    let totalPrice = 0;
-    icons.forEach((icon) => {
-      if (icon.isactive) {
-        totalPrice += icon.sub;
-      }
-    });
-    setTotalPrice(totalPrice);
-  }, [icons]);
+  // useEffect(() => {
+  //   let totalPrice = 0;
+  //   icons.forEach((icon) => {
+  //     if (icon.isactive) {
+  //       totalPrice += icon.sub;
+  //     }
+  //   });
+  //   setTotalPrice(totalPrice);
+  // }, [icons]);
   useEffect(() => {
     console.log("icons", icons);
   }, [icons]);
@@ -88,9 +88,9 @@ export default function IconBoard({}) {
           </div>
         ))}
       </div>
-      <div>
+      {/* <div>
         <h2>Total Price: ${totalPrice}</h2>
-      </div>
+      </div> */}
     </div>
   );
 }
